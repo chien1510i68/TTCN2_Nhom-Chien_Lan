@@ -1,10 +1,19 @@
 package com.example.mobilemanager.Entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "supplier")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class SupplierEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
