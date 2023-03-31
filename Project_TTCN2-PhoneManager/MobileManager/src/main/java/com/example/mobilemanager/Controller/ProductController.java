@@ -42,6 +42,7 @@ public class ProductController {
                         .success(true)
                         .data(prodDTO).build();
                 return ResponseEntity.ok(productResponse);
+//                return ResponseEntity.ok(prodDTO);
             } catch (Exception ex) {
                 BaseResponse response = new BaseResponse();
                 response.setFailed(ErrorCodeDefs.SERVER_ERROR, ex.getMessage());

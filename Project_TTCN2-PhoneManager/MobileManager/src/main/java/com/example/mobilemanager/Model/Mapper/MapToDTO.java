@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class MapToDTO {
     public ProdDTO convertProdToDTO(ProductEntity pe){
         ProdDTO prodDTO = ProdDTO.builder()
-                .id(pe.getId())
+                .pdtoid(pe.getProductId())
                 .price(pe.getPrice())
                 .image(pe.getImage())
                 .productName(pe.getProductName())

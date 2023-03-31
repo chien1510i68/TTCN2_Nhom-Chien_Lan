@@ -8,23 +8,17 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "order_item")
-@Data
+@Table(name = "status")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class OrderItemEntity {
-
+@Data
+public class StatusEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="order_item_id" )
-    private Long orderItemId;
+    @Column(name = "status_id")
+    private int statusId;
 
-    @OneToOne
-    @JoinColumn(name = "product_id" , referencedColumnName = "product_id")
-    private ProductEntity productEntity;
-
-
-
-
+    @Column(name = "status_name")
+    private String statusName;
 }
