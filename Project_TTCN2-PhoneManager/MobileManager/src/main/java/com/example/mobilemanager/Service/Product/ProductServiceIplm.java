@@ -3,8 +3,10 @@ package com.example.mobilemanager.Service.Product;
 import com.example.mobilemanager.Entity.ProductEntity;
 import com.example.mobilemanager.Model.DTO.ProdDTO;
 import com.example.mobilemanager.Model.Mapper.MapToDTO;
+import com.example.mobilemanager.Model.Mapper.ProductMapper;
 import com.example.mobilemanager.Repository.ProductRepoSitory;
 import com.example.mobilemanager.Request.ProductReq.ProdRequest;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,8 @@ import java.util.List;
 import java.util.Optional;
 @Service
 public class ProductServiceIplm implements ProductService {
-
+    @Autowired
+    private ModelMapper modelMapper;
     @Autowired
     private ProductRepoSitory productRepo;
     @Autowired
@@ -48,7 +51,13 @@ public class ProductServiceIplm implements ProductService {
         } else {
             productEntity = entity.get();
         }
-        return mapper.convertProdToDTO(productEntity);
+//        ProdDTO prd =  ProductMapper.INSTANCE.toProdentityToProductDTO(productEntity);
+//        return prd;
+//        return mapper.convertProdToDTO(productEntity);
+        return modelMapper.map(productEntity ,ProdDTO.class);
+
+
+
     }
 
     @Override
@@ -98,10 +107,11 @@ public class ProductServiceIplm implements ProductService {
     }
 
     @Override
+
     public List<ProdDTO> deleteList(List<Long> ids) {
        List<ProdDTO> dtoList = new ArrayList<>();
        for(ProductEntity entity : productRepo.findAllById(ids)){
-           dtoList.add(mapper.convertProdToDTO(entity));
+           dtoList.add(ProductMapper.INSTANCE.toProdentityToProductDTO(entity));
        }
        productRepo.deleteAllByIdInBatch(ids);
         return dtoList;

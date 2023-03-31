@@ -8,12 +8,10 @@ import com.example.mobilemanager.Response.ResponseSuccess.ListProductResponse;
 import com.example.mobilemanager.Response.ResponseSuccess.ProductResponse;
 import com.example.mobilemanager.Service.Product.ProductServiceIplm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -42,6 +40,7 @@ public class ProductController {
                         .success(true)
                         .data(prodDTO).build();
                 return ResponseEntity.ok(productResponse);
+//                return ResponseEntity.ok(prodDTO);
             } catch (Exception ex) {
                 BaseResponse response = new BaseResponse();
                 response.setFailed(ErrorCodeDefs.SERVER_ERROR, ex.getMessage());

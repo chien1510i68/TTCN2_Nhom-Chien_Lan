@@ -26,4 +26,8 @@ public class PromotionEntity {
     private Date startDate;
     @Column(name = "end_date")
     private Date endtDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "promotion_product_id")
+    private Promotion_ProductEntity promotion_productEntity;
 }

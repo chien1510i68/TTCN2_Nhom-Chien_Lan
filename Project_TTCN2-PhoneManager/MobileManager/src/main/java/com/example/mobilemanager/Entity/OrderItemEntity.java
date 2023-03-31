@@ -17,9 +17,16 @@ public class OrderItemEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderItemID;
+    @Column(name ="order_item_id" )
+    private Long orderItemId;
 
     @OneToOne
-    @JoinColumn(name = "product_id" , referencedColumnName = "product_id")
+    @JoinColumn(name = "fk_product_id" , referencedColumnName = "product_id")
     private ProductEntity productEntity;
+
+    @OneToOne
+    @JoinColumn(name = "fk_promotion_product_id" , referencedColumnName = "promotion_product_id")
+    private Promotion_ProductEntity promotion_productEntity;
+
+
 }

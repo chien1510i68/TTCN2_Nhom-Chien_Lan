@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 
 public class ProdDTO {
-    private long id ;
+    private long pdtoid ;
     private float price ;
     private String image;
     private  String productName;
