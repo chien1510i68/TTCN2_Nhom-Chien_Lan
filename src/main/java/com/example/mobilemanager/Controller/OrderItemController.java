@@ -4,18 +4,16 @@ import com.example.mobilemanager.Constant.ErrorCodeDefs;
 import com.example.mobilemanager.Model.DTO.OrderItemDTO;
 import com.example.mobilemanager.Response.ResponseError.BaseResponse;
 import com.example.mobilemanager.Response.ResponseSuccess.ItemResponse;
-import com.example.mobilemanager.Response.ResponseSuccess.ProductResponse;
-import com.example.mobilemanager.Service.Order.OrderItemService;
+import com.example.mobilemanager.Service.OrderItem.OrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/orderitem")
 public class OrderItemController {
     @Autowired
     private OrderItemService orderItemService;

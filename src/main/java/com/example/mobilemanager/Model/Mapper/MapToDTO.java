@@ -1,11 +1,9 @@
 package com.example.mobilemanager.Model.Mapper;
 
-import com.example.mobilemanager.Entity.ProductEntity;
-import com.example.mobilemanager.Model.DTO.ProdDTO;
-import lombok.AllArgsConstructor;
+import com.example.mobilemanager.Entity.Product;
+import com.example.mobilemanager.Model.DTO.ProductDTO;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,9 +12,9 @@ import org.springframework.stereotype.Component;
 //@NoArgsConstructor
 @Builder
 public class MapToDTO {
-    public ProdDTO convertProdToDTO(ProductEntity pe){
-        ProdDTO prodDTO = ProdDTO.builder()
-                .pdtoid(pe.getProductId())
+    public ProductDTO convertProdToDTO(Product pe){
+        ProductDTO productDTO = ProductDTO.builder()
+//                .pdtoid(pe.getProductId())
                 .price(pe.getPrice())
                 .image(pe.getImage())
                 .productName(pe.getProductName())
@@ -28,8 +26,9 @@ public class MapToDTO {
                 .size(pe.getSize())
                 .color(pe.getColor())
                 .warrantyPeriod(pe.getWarrantyPeriod())
-                .promotionID(pe.getPromotionID()).build();
-                return prodDTO;
+//                .promotionID(pe.getPromotionID())
+                .build();
+        return productDTO;
 
     }
 }

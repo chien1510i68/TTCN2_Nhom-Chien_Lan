@@ -11,7 +11,7 @@ public class BirthDateValidator implements ConstraintValidator<com.example.mobil
     public boolean isValid(String date, ConstraintValidatorContext constraintValidatorContext) {
         if (date == null)
             return false;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         simpleDateFormat.setLenient(false);
         try {
             return simpleDateFormat.parse(date) != null;

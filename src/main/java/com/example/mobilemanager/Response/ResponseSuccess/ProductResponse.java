@@ -1,6 +1,6 @@
 package com.example.mobilemanager.Response.ResponseSuccess;
 
-import com.example.mobilemanager.Model.DTO.ProdDTO;
+import com.example.mobilemanager.Model.DTO.ProductDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ProductResponse {
     private boolean success = true;
-    private ProdDTO data ;
+    private ProductDTO data ;
 }

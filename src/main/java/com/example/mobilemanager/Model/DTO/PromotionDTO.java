@@ -1,23 +1,34 @@
 package com.example.mobilemanager.Model.DTO;
 
-import com.example.mobilemanager.Entity.Promotion_ProductEntity;
+import com.example.mobilemanager.Entity.Product;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.List;
 
 @Component
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class PromotionDTO {
-    private float promotionValue;
+    private Long promotionID;
 
+    private float promotionPercentage;
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date startDate;
 
-    private Date endtDate;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private Date endDate;
 
-    private Promotion_ProductEntity promotion_productEntity;
+    private float minimumPurchaseAmount;
+
+    private String ids;
+
+//    private PromotionProduct promotion_productEntity;
 }

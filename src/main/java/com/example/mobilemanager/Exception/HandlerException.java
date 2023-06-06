@@ -17,8 +17,6 @@ import java.util.List;
 public class HandlerException {
 
 
-
-
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -33,21 +31,33 @@ public class HandlerException {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public BaseResponse httpMediaTypeNotAcceptableException(HttpMessageNotReadableException ex){
-        return    BaseResponse.builder().success(false).error(
+    public BaseResponse httpMediaTypeNotAcceptableException(HttpMessageNotReadableException ex) {
+        return BaseResponse.builder().success(false).error(
                 BaseResponse.Error.builder().status(ErrorCodeDefs.VALIDATION_ERROR)
                         .message(ErrorCodeDefs.getErrMsg(ErrorCodeDefs.VALIDATION_ERROR)).build()
         ).build();
     }
+
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    public BaseResponse methodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex){
+    public BaseResponse methodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex) {
         return BaseResponse.builder().success(false).error(
                 BaseResponse.Error.builder().status(ErrorCodeDefs.BAD_REQUEST)
                         .message(ErrorCodeDefs.getErrMsg(ErrorCodeDefs.BAD_REQUEST)).build()
         ).build();
     }
+
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseBody
+    @ExceptionHandler(AlertBadException.class)
+    public BaseResponse alertBadException(AlertBadException ex) {
+        return BaseResponse.builder().success(false).error(
+                BaseResponse.Error.builder().status(ErrorCodeDefs.BAD_REQUEST)
+                        .message(ex.getMsg()).build()
+        ).build();
+    }
+
 
     private BaseResponse.Error processFielError(List<FieldError> fieldErrors) {
         BaseResponse.Error error = BaseResponse.Error.builder().status(ErrorCodeDefs.VALIDATION_ERROR)
@@ -61,7 +71,6 @@ public class HandlerException {
         error.setDetailErrorList(detailErrorList);
         return error;
     }
-
 
 
 }
